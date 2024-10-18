@@ -1,0 +1,39 @@
+<div class="text-end">
+    <button type="button" class="btn btn-primary btn-lg" (click)="showBackOption()"
+    *ngIf="showBack">Regresar</button>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-4 col-sx-12 d-flex justify-content-center align-items-center image-container">
+        <div class="card" style="width: 18rem;  cursor: pointer;"
+        (click)="showManageIncidentComponent()" *ngIf="showMenu">
+            <img class="card-img-top" src="https://cdn-icons-png.freepik.com/512/9577/9577437.png" alt="gestionar incidentes">
+            <div class="card-body">
+                <h5 class="card-title text-center">Gestionar incidentes</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 col-sx-12 d-flex justify-content-center align-items-center image-container">
+        <div class="card" style="width: 18rem; cursor: pointer;"
+        (click)="showControlPanelComponent()" *ngIf="showMenu">
+            <img class="card-img-top" src="https://cdn-icons-png.freepik.com/512/14852/14852782.png?ga=GA1.1.1313625746.1728078751" alt="Tablero de control">
+            <div class="card-body">
+                <h5 class="card-title text-center">Tablero de control</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 col-sx-12 d-flex justify-content-center align-items-center image-container">
+        <div class="card" style="width: 18rem; cursor: pointer;"
+        (click)="showIndicatorsComponent()" *ngIf="showMenu">
+            <img class="card-img-top" src="https://cdn-icons-png.freepik.com/512/16316/16316405.png?ga=GA1.1.1313625746.1728078751" alt="Indicadores">
+            <div class="card-body">
+                <h5 class="card-title text-center">Indicadores</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-manage-incident *ngIf="showManageIncident" />
+<app-control-panel *ngIf="showControlPanel" />
+<app-indicators *ngIf="showIndicators" />

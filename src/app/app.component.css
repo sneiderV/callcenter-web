@@ -1,0 +1,17 @@
+.navbar {
+    background-color: #2DAAE1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;  /* Para un efecto más suave al hacer scroll */
+}
+
+.navbar:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.navbar p {
+    color: white;
+}
+
+.navbar a {
+    color: white;
+}

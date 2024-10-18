@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <div *ngIf="!showDetail">
+    <h2 class="text-center">Estos son los incidentes pendientes por resolver</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"># Radicado</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Asunto</th>
+          <th scope="col">Origen</th>
+          <th scope="col">Fecha creacion</th>
+          <th scope="col">Ultima actualizacion</th>
+          <th scope="col">Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let incident of incidentsList">
+          <th scope="row">1</th>
+          <td>{{incident.status}}</td>
+          <td>{{incident.subject}}</td>
+          <td>{{incident.originType}}</td>
+          <td>date</td>
+          <td>date</td>
+          <td><button type="button" class="btn btn-primary" (click)="onSelect(incident)">Gestionar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-incident-detail-manage *ngIf="showDetail" [incidentDetail]="selectedIncident"></app-incident-detail-manage>
+
+</div>

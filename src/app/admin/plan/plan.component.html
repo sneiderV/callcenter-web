@@ -1,0 +1,52 @@
+<div class="container text-center">
+  <h2 class="text-center">Plan del cliente</h2>
+  <div class="row align-items-start">
+    <div class="col-sm-6 col-12">
+      <div class="container">
+
+        <form [formGroup]="planForm" (ngSubmit)="!planForm.invalid && savePlan(planForm.value)">
+
+          <!--plan-->
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="plan">Seleccione el plan ideal para el cliente</label>
+            <select id="plan" class="form-control" formControlName="plan" required>
+              <option value="" disabled>Seleccione un plan</option>
+              <option value="Emprendedor">Emprendedor</option>
+              <option value="Empresario">Empresario</option>
+              <option value="Empresario Plus">Empresario plus</option>
+            </select>
+            <div class="alert alert-danger alert-dismissible fade show" *ngIf="
+                planForm.get('plan')!.hasError('required') &&
+                planForm.get('plan')!.touched
+              ">
+              El plan es requerido
+            </div>
+          </div>
+
+          <!--Controles-->
+          <button type="submit" class="btn btn-primary" [disabled]="!planForm.valid">
+            Guardar
+          </button>
+
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-6 col-12">
+      <div class="card" style="background-color: #D9D9D9;" >
+        <div class="card-body">
+          <h5 class="card-title">Detalles de nuestros planes</h5>
+          <p class="card-text"> 
+            Emprendedor: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac purus ut diam elementum semper.
+            Quisque vel libero turpis.
+            </p>
+            <p class="card-text"> Empresario: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac purus ut diam elementum semper.
+              Quisque vel libero turpis.
+              </p>
+              <p class="card-text">
+                Empresario plus:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac purus ut diam elementum semper.
+                Quisque vel libero turpis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

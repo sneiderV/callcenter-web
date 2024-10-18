@@ -1,0 +1,8 @@
+<nav class="navbar" *ngIf="authService.isAuthenticated">
+  <a class="navbar-brand ps-5">Bienvenido</a>
+  <a class="navbar-brand pe-5" style="cursor: pointer;" (click)="logout()"> <i class="bi bi-box-arrow-left pe-3"></i> Salir</a>
+</nav>
+
+<div class="container-fluid pt-5" id="principal">
+  <router-outlet/>
+</div>

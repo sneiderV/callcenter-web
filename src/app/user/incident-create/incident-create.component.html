@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <h2 class="text-center">Crear un incidente</h2>
+  <form [formGroup]="incidentForm" (ngSubmit)="!incidentForm.invalid && createIncident(incidentForm.value)">
+
+    <!--subject-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="subject">Asunto</label>
+      <input novalidate id="subject" class="form-control" formControlName="subject"
+        placeholder="Asunto" />
+      <div class="alert alert-danger alert-dismissible fade show" *ngIf="
+          incidentForm.get('subject')!.hasError('required') &&
+          incidentForm.get('subject')!.touched
+        ">
+        El asunto del incidente es requerido.
+      </div>
+    </div>
+
+    <!--description-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="description">Descripcion</label>
+      <input novalidate id="description" class="form-control" formControlName="description"
+        placeholder="Describe con detalles el incidente" />
+      <div class="alert alert-danger alert-dismissible fade show" *ngIf="
+          incidentForm.get('description')!.hasError('required') &&
+          incidentForm.get('description')!.touched
+        ">
+        La descripcion del agente es requerida.
+      </div>
+    </div>
+
+    <!--Controles-->
+    <div class="pt-5 text-center">
+      <button type="submit" class="btn btn-primary me-3 w-25" [disabled]="!incidentForm.valid">
+        Crear
+      </button>
+      <button type="button" class="btn btn-danger ms-3 w-25" (click)="cancelCreation()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

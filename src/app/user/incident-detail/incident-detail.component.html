@@ -1,0 +1,36 @@
+<div *ngIf="incidetDetail" class="container mt-4">
+  <h2 class="text-center">Detalle del incidente # {{incidetDetail.id}} </h2>
+
+  <div class="card text-center mt-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td>Numero de radicado</td>
+            <td>{{incidetDetail.id}}</td>
+          </tr>
+          <tr>
+            <td>Fecha de creacion</td>
+            <td>{{incidetDetail.creationDate}}</td>
+          </tr>
+          <tr>
+            <td>Asunto</td>
+            <td>{{incidetDetail.subject}}</td>
+          </tr>
+          <tr>
+            <td>Descripcion</td>
+            <td>{{incidetDetail.description}}</td>
+          </tr>
+          <tr>
+            <td>Estado</td>
+            <td>{{incidetDetail.status}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer text-body-secondary">
+      espacio para el agente
+    </div>
+  </div>
+  {{incidetDetail | json}}
+</div>

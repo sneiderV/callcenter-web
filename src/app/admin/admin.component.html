@@ -1,0 +1,28 @@
+<div class="text-end">
+    <button type="button" class="btn btn-primary btn-lg" (click)="showBackOption()"
+    *ngIf="showBack">Regresar</button>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-6 col-sx-12 d-flex justify-content-center align-items-center image-container">
+        <div class="card" style="width: 18rem;  cursor: pointer;"
+        (click)="showPlanComponent()" *ngIf="showMenu">
+            <img class="card-img-top" src="https://cdn-icons-png.freepik.com/512/9577/9577437.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title text-center">Plan</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-sx-12 d-flex justify-content-center align-items-center image-container">
+        <div class="card" style="width: 18rem; cursor: pointer;"
+        (click)="showCreateAgentComponent()" *ngIf="showMenu">
+            <img class="card-img-top" src="https://cdn-icons-png.freepik.com/512/6144/6144457.png?ga=GA1.1.162831122.1727907937" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title text-center">Crear agente</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-plan *ngIf="showPlan" />
+<app-agent-create *ngIf="showCreateAgent" />

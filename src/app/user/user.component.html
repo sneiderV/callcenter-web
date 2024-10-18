@@ -1,0 +1,29 @@
+<div class="text-end">
+    <button type="button" class="btn btn-primary btn-lg" (click)="showBackOption()"
+    *ngIf="showBack">Regresar</button>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-6 col-sx-12 d-flex justify-content-center align-items-center image-container">
+        <div class="card" style="width: 18rem;  cursor: pointer;"
+        (click)="showCreateIncidentComponent()" *ngIf="showMenu">
+            <img class="card-img-top" src="https://cdn-icons-png.freepik.com/512/13728/13728178.png?ga=GA1.1.1313625746.1728078751" alt="Crear incidente">
+            <div class="card-body">
+                <h5 class="card-title text-center">Crear incidente</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-sx-12 d-flex justify-content-center align-items-center image-container">
+        <div class="card" style="width: 18rem; cursor: pointer;"
+        (click)="showSearchIncidentComponent()" *ngIf="showMenu">
+            <img class="card-img-top" src="https://cdn-icons-png.freepik.com/512/16985/16985532.png?ga=GA1.1.1313625746.1728078751" alt="Consultar incidentes">
+            <div class="card-body">
+                <h5 class="card-title text-center">Consultar incidentes</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-incident-create *ngIf="showCreateIncident" />
+<app-incident-search *ngIf="showSearchIncident" />
