@@ -1,6 +1,16 @@
-<div class="text-end">
-    <button type="button" class="btn btn-primary btn-lg" (click)="showBackOption()"
-    *ngIf="showBack">Regresar</button>
+<div class="row justify-content-between align-items-center mb-4">
+    <!-- Columna para la imagen y el texto -->
+    <div class="col-auto d-flex align-items-center ms-5">
+        <img src="https://cdn-icons-png.freepik.com/512/15762/15762640.png?ga=GA1.1.378508795.1727907287" alt="Admin Image" style="width: 50px; height: 50px; margin-right: 10px;">
+        <span class="fw-bold">Administrador</span>
+    </div>
+
+    <!-- Columna para el botón alineado a la derecha -->
+    <div class="col-auto text-end me-5" *ngIf="showBack">
+        <button type="button" class="btn btn-primary btn-lg" (click)="showBackOption()">
+            Regresar
+        </button>
+    </div>
 </div>
 
 <div class="row justify-content-center mt-5">
@@ -14,7 +24,7 @@
         </div>
     </div>
     <div class="col-6 col-sx-12 d-flex justify-content-center align-items-center image-container">
-        <div class="card" style="width: 18rem; cursor: pointer;"
+        <div id="create-agent" class="card" style="width: 18rem; cursor: pointer;"
         (click)="showCreateAgentComponent()" *ngIf="showMenu">
             <img class="card-img-top" src="https://cdn-icons-png.freepik.com/512/6144/6144457.png?ga=GA1.1.162831122.1727907937" alt="Card image cap">
             <div class="card-body">
