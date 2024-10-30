@@ -32,7 +32,7 @@ jobs:
         run: npm install
       
       - name: Run Unit Tests
-        run: ng test --code-coverage
+        run: npm run test-cov
       
       - name: Subir reporte de cobertura
         uses: actions/upload-artifact@v3
