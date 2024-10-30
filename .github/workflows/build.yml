@@ -18,3 +18,25 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run Unit Tests
+        run: ng test --code-coverage
+      
+      - name: Subir reporte de cobertura
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage
+  
