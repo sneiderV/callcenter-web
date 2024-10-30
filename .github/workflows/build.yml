@@ -36,7 +36,12 @@ jobs:
           npm run test -- --code-coverage --watch=false
           if [ $(jq '.total.lines.pct' coverage/coverage-summary.json) -lt 70 ]; then exit 1; fi
       
-      - name: Subir reporte de cobertura
+      - name: Verify Coverage Report Generation
+        run: |
+          echo "Checking for lcov.info in the coverage/ directory..."
+          ls -R coverage/
+  
+      - name: Upload Coverage Report
         uses: actions/upload-artifact@v3
         with:
           name: coverage-report
