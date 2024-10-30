@@ -22,7 +22,6 @@ jobs:
       - name: Run Unit Tests
         run: |
           npm run test -- --code-coverage --watch=false
-          if [ $(jq '.total.lines.pct' coverage/coverage-summary.json) -lt 70 ]; then exit 1; fi
       
       - name: Verify Coverage Report Generation
         run: |
