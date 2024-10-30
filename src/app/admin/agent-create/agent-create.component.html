@@ -75,7 +75,7 @@
     <!--phoneNumber-->
     <div class="form-group mx-sm-3 mb-2">
       <label for="phoneNumber">Telefono</label>
-      <input novalidate id="phoneNumber" class="form-control" formControlName="phoneNumber"
+      <input novalidate id="phoneNumber" type="number" class="form-control" formControlName="phoneNumber"
         placeholder="Telefono de contacto del agente" />
       <div class="alert alert-danger alert-dismissible fade show" *ngIf="
               agentForm.get('phoneNumber')!.hasError('required') &&
@@ -88,7 +88,7 @@
 
     <!--Controles-->
     <div class="pt-5 text-center">
-      <button type="submit" class="btn btn-primary me-3 w-25" [disabled]="!agentForm.valid">
+      <button id="btn-create-agent" type="submit" class="btn btn-primary me-3 w-25" [disabled]="!agentForm.valid">
         Crear
       </button>
       <button type="button" class="btn btn-danger ms-3 w-25" (click)="cancelCreation()">
