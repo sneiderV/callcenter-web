@@ -32,7 +32,9 @@ jobs:
         run: npm install
       
       - name: Run Unit Tests
-        run: npm run test-cov
+        run: |
+          npm run test -- --code-coverage --watch=false
+          if [ $(jq '.total.lines.pct' coverage/coverage-summary.json) -lt 70 ]; then exit 1; fi
       
       - name: Subir reporte de cobertura
         uses: actions/upload-artifact@v3

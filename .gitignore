@@ -1,0 +1,25 @@
+# Angular specific
+node_modules/
+dist/
+tmp/
+temp/
+.angular/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Logs
+logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
