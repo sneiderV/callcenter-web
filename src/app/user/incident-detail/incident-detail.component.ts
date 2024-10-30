@@ -12,6 +12,7 @@ export class IncidentDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.incidetDetail);
   }
 
 }

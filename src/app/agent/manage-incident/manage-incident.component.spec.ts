@@ -1,33 +1,35 @@
-/* tslint:disable:no-unused-variable */
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ManageIncidentComponent } from './manage-incident.component';
-import { UserService } from '../../user/user.service';
+import { AgentService } from '../agent.service';
+import { of } from 'rxjs';
 import { Incident } from '../../user/incident';
-
-class MockUserService {
-  getIncidents(): Incident[] {
-    return [
-      { id: 1, userId: 'user1', subject: 'Incident 1', description: 'Description 1', status: 'Open', originType: 'Email', solution: 'N/A', creationDate: new Date(), updateDate: new Date() },
-      { id: 2, userId: 'user2', subject: 'Incident 2', description: 'Description 2', status: 'Closed', originType: 'Phone', solution: 'N/A', creationDate: new Date(), updateDate: new Date() }
-    ];
-  }
-}
 
 describe('ManageIncidentComponent', () => {
   let component: ManageIncidentComponent;
   let fixture: ComponentFixture<ManageIncidentComponent>;
+  let mockAgentService: jasmine.SpyObj<AgentService>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ManageIncidentComponent ],
+  const mockIncidents: Incident[] = [
+    new Incident(
+      'user1', 'Incident 1', 'Description 1', 'open', 'email', 'Solution 1', new Date('2023-01-01'), new Date('2023-01-02')
+    ),
+    new Incident(
+      'user2', 'Incident 2', 'Description 2', 'closed', 'phone', 'Solution 2', new Date('2023-01-03'), new Date('2023-01-04')
+    )
+  ];
+
+  beforeEach(async () => {
+    // Crear el mock del servicio con Jasmine
+    mockAgentService = jasmine.createSpyObj('AgentService', ['getIncidents']);
+    mockAgentService.getIncidents.and.returnValue(of(mockIncidents));
+
+    await TestBed.configureTestingModule({
+      declarations: [ManageIncidentComponent],
       providers: [
-        { provide: UserService, useClass: MockUserService } // Proporcionar el mock del UserService
+        { provide: AgentService, useValue: mockAgentService }
       ]
-    })
-    .compileComponents();
-  }));
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ManageIncidentComponent);
@@ -35,17 +37,21 @@ describe('ManageIncidentComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize incidentsList with incidents from UserService', () => {
-    expect(component.incidentsList.length).toBe(2); // Verificar que hay 2 incidentes
+  it('should load incidents on initialization', () => {
+    component.ngOnInit();
+    expect(component.incidentsList).toEqual(mockIncidents);
+    expect(mockAgentService.getIncidents).toHaveBeenCalled();
   });
 
-  it('should select an incident and show details', () => {
-    component.onSelect(component.incidentsList[0]); // Seleccionar el primer incidente
-    expect(component.selectedIncident).toEqual(component.incidentsList[0]);
+  it('should set selectedIncident and showDetail when onSelect is called', () => {
+    const incident = mockIncidents[0];
+    component.onSelect(incident);
+
+    expect(component.selectedIncident).toEqual(incident);
     expect(component.showDetail).toBeTrue();
   });
 });

@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <div *ngIf="!showDetail">
     <h2 class="text-center">Estos son los incidentes pendientes por resolver</h2>
-    <table class="table">
+    <table class="table table-hover mt-5">
       <thead>
         <tr>
           <th scope="col"># Radicado</th>
@@ -15,12 +15,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let incident of incidentsList">
-          <th scope="row">1</th>
+          <th scope="row">{{incident.id}}</th>
           <td>{{incident.status}}</td>
           <td>{{incident.subject}}</td>
           <td>{{incident.originType}}</td>
-          <td>date</td>
-          <td>date</td>
+          <td>{{incident.creationDate | date}}</td>
+          <td>{{incident.updateDate | date}}</td>
           <td><button type="button" class="btn btn-primary" (click)="onSelect(incident)">Gestionar</button></td>
         </tr>
       </tbody>

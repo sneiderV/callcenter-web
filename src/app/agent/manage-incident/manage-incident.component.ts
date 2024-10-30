@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Incident } from '../../user/incident';
-import { UserService } from '../../user/user.service';
+import { AgentService } from '../agent.service';
 
 @Component({
   selector: 'app-manage-incident',
@@ -14,11 +14,14 @@ export class ManageIncidentComponent implements OnInit {
   showDetail = false;
 
   constructor(
-    private userService: UserService
+    private agentService: AgentService
   ) { }
 
   ngOnInit() {
-    this.incidentsList = this.userService.getIncidents();
+    
+    this.agentService.getIncidents().subscribe(incidents => {
+      this.incidentsList = incidents;
+    });
   }
 
   onSelect(incident: Incident): void {
