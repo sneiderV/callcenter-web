@@ -10,6 +10,7 @@ export class ControlPanelComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+      // The method is empty because we don't need to do anything when the component is initialized.
   }
 
 }
